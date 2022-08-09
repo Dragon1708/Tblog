@@ -1,0 +1,16 @@
+@import "../../../scss/variable";
+@import "../../../scss/fonts";
+
+.TagCard{
+  padding:8px 16px;
+  margin-left: 6px;
+  background: #FFFFFF;
+  border: 1px solid #939699;
+  border-radius: 30px;
+  color: #121212;
+cursor: pointer;
+  &:hover{
+    background: #121212;
+    color: #FFFFFF;
+  }
+}

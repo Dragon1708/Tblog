@@ -1,0 +1,21 @@
+@import "../../scss/variable";
+@import "../../scss/fonts";
+
+
+.FeaturedBlock{
+
+    &__title-block{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+    &__view-more{
+        padding: 4px 16px;
+background: #FFFFFF;
+border: 1px solid #939699;
+border-radius: 30px;
+    }
+    &__title{
+
+    }
+}

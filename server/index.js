@@ -3,10 +3,10 @@ import mongoose from 'mongoose';
 import multer from 'multer';
 
 import {loginValidator, registerValidator, articleCreateValidator } from "./validation/validations.js";
-import checkAuth from "./utils/checkAuth.js";
 
-import * as UserController from "./controllers/UserController.js";
-import * as ArticleController from "./controllers/ArticleController.js";
+import {checkAuth, handleValidErrors} from "./utils/index.js"
+
+import {UserController, ArticleController} from "./controllers/index.js"
 
 mongoose.connect(
     'mongodb+srv://Winso:123098456@cluster0.hkpingz.mongodb.net/Tblog?retryWrites=true&w=majority'
@@ -14,7 +14,19 @@ mongoose.connect(
 
 const app = express();
 
+const storage=multer.diskStorage({
+    destination:(_,__,cb)=>{
+        cb(null, 'uploads')
+    },
+    filename:(_,file,cb)=>{
+        cb(null, file.originalname)
+    },
+})
+
+const upload=multer({storage})
+
 app.use(express.json())
+app.use('/uploads', express.static('uploads'))
 
 app.get('/', (req, res) => {
     res.send("Ti daun") 
@@ -22,10 +34,14 @@ app.get('/', (req, res) => {
 
 
 app.get('/auth/me',checkAuth, UserController.getMe)
+app.post('/auth/register', registerValidator,handleValidErrors, UserController.register)
+app.post('/auth/login', loginValidator,handleValidErrors, UserController.login)
 
-app.post('/auth/register', registerValidator, UserController.register)
-
-app.post('/auth/login',loginValidator, UserController.login)
+app.post('/upload',checkAuth, upload.single('image'), (req, res) => {
+    res.json({
+        url: `/upload/${req.params.originalname}`
+    })
+})
 
  app.get('/article', ArticleController.getAll)
  app.get('/article/:id', ArticleController.getOne)

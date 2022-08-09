@@ -1,0 +1,43 @@
+@import "../../../scss/variable";
+@import "../../../scss/fonts";
+
+.FuturedCard{
+display:flex;
+
+box-shadow: 1px 32px 29px rgba(0, 0, 0, 0.25), 10px 12px 21px rgba(0, 0, 0, 0.25), 13px 14px 7px -6px rgba(24, 39, 75, 0.12), 0px 18px 26px -4px rgba(24, 39, 75, 0.14);
+border-radius: 20px 0px 0px 20px;
+    &__left-side{
+        background: linear-gradient(114.33deg, #1F1F1F 5.57%, #2E2E2E 40.98%, #282828 68.78%, #121212 100%);
+   padding: 40px;
+   border-radius: 20px 0px 0px 20px;
+    }
+    &__title{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 48px;
+        
+        color: #FFFFFF;
+    }
+    &__sub-title{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        
+        color: #939699;
+
+        margin-bottom: 20px;
+    }
+    &__btn{
+     cursor: pointer;
+padding: 6px 10px;
+        background: #FFFFFF;
+        border-radius: 40px;
+    }
+    &__img{
+      width: 380px;
+        border-radius: 0px 20px 20px 0px;
+        box-shadow: 1px 32px 29px rgba(0, 0, 0, 0.25), 10px 12px 21px rgba(0, 0, 0, 0.25), 13px 14px 7px -6px rgba(24, 39, 75, 0.12), 0px 18px 26px -4px rgba(24, 39, 75, 0.14);
+    }
+}
